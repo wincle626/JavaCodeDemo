@@ -100,7 +100,9 @@ public class exception
 			}
 		}catch(myexception1 e1) {
 			e1.printStackTrace();
-		}
+		}finally {
+            System.out.println ("I am in finally block.");
+        }
 		
 		try {				
 			if(caseind>5){
@@ -110,49 +112,93 @@ public class exception
 			}
 		}catch(myexception2 e2) {
 			e2.printStackTrace();
-		}
+		}finally {
+            System.out.println ("I am in finally block.");
+        }
+
+		try {	
+			myexception3 excep3 =
+                    new myexception3("warning for unhandled cases! will fix it later! ");
+                 throw excep3;
+		}catch(myexception3 e3) {
+			e3.printStackTrace();
+		}finally {
+            System.out.println ("I am in finally block.");
+        }
 				
 	}
 	
-	public static int exceptionorder() {
+	public static int exceptionorder1() {
 
-		try{
+		try{ // one exception at a time
             // "akki" is not a number
             int num = Integer.parseInt ("akki") ; 
             System.out.println(num);
-            return 0;
+            return 1/0;
         }
+		catch(ArithmeticException e){
+            System.out.println ("Can't divide a number by 0");
+        	e.printStackTrace();			
+		}
 		catch(NullPointerException e) {
             System.out.println("NullPointerException.");
-            return 0;
         }
 		catch(StringIndexOutOfBoundsException e) {
             System.out.println("StringIndexOutOfBoundsException.");
-            return 0;
         } 
 		catch(NumberFormatException e) {
             System.out.println("Number format exception.");
         }
         catch(ArrayIndexOutOfBoundsException e){
             System.out.println ("Array Index is Out Of Bounds.");
-            return 0;
         }finally {
             System.out.println ("I am in finally block.");
         }
-        System.out.println ("Now I am returning.");
+        System.out.println ("Now I am returning from exceptionorder1().");
 		return 0;
+		
+	}
+	public static int exceptionorder2() {
+
+		int num = 0;
+		try{
+			num = 1/0;
+            return num;
+        }
+		catch(ArithmeticException e){
+            System.out.println ("Can't divide a number by 0");
+        	e.printStackTrace();			
+		}
+		catch(NullPointerException e) {
+            System.out.println("NullPointerException.");
+        }
+		catch(StringIndexOutOfBoundsException e) {
+            System.out.println("StringIndexOutOfBoundsException.");
+        } 
+		catch(NumberFormatException e) {
+            System.out.println("Number format exception.");
+        }
+        catch(ArrayIndexOutOfBoundsException e){
+            System.out.println ("Array Index is Out Of Bounds.");
+        }finally {
+            System.out.println ("I am in finally block.");
+            // num = 999999;
+        }
+        System.out.println ("Now I am returning from exceptionorder2() .");
+		return num;
 		
 	}
 
 	public static void main(String[] args) 
-			throws IOException, IllegalFormatException, RuntimeException
 	{
 		// TODO Auto-generated method stub
 		// Java buildin exceptions
-		int caseind = 5;
-		buildinexception(caseind);
+//		int caseind = 5;
+//		buildinexception(caseind);
 		// Exception execution orders
-//		exceptionorder();
+//		int num = 1/0; 
+		exceptionorder1(); // no interruption to program
+		exceptionorder2();
 		// Custom exceptions
 //		int caseind = 7;
 //		customexception(caseind);

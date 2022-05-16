@@ -1,6 +1,5 @@
 package exceptionpackage;
 
-
 public class myexception2  extends Throwable {
 
 	// default constructor
