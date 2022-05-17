@@ -1,6 +1,30 @@
 package exceptionpackage;
 // List of Java Exceptions: https://programming.guide/java/list-of-java-exceptions.html
 
+// exception is used for robust code development, especially collaboratively
+
+// exception can only handle one error at a time
+
+// exception can have multiple catch block for catching different errors in sequential order
+
+// only the first catch clause block with matching error type will be executed
+
+// the order of multiple catch clause block does matter
+
+// exception will not terminate the program with fatal errors
+
+// exception is more integrated in debug rather than customised control flow approach (if-else/switch)
+
+// using if-else/switch is faster than exception in debug but it is at its own risk in defining error handling
+
+// try{the developing functionality might have error}
+// catch(exceptiontype e){solution when there is an error}
+// finally{always executed functionality}
+
+// 'try' is divided code from program for testing or handling any potential error
+// 'catch' gives solution or any assertion to the error
+// 'finally' is used for some function that must execute (e.g. clean memory, close file/socket handle, etc.) 
+
 import java.io.*;
 import java.util.*;
 
@@ -208,3 +232,4 @@ public class exception
 	}
 
 }
+
